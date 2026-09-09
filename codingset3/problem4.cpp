@@ -1,51 +1,28 @@
 #include <iostream>
 using namespace std;
-
-class BankAccount
-{
+class BankAccount {
 public:
     int accountNumber;
     double balance;
-
-    void transfer(BankAccount &receiver, double amount)
-    {
-        if (balance >= amount)
-        {
+    void transfer(BankAccount &receiver, double amount) {
+        if (balance >= amount) {
             balance = balance - amount;
             receiver.balance = receiver.balance + amount;
-        }
-        else
-        {
-            cout << "Insufficient Balance";
+            cout << "Transfer successful!" << endl;
+        } else {
+            cout << "Insufficient balance!" << endl;
         }
     }
 };
 
-int main()
-{
+int main() {
     BankAccount a1, a2;
-    double amount;
-
-    cout << "Enter Account 1 Number: ";
-    cin >> a1.accountNumber;
-
-    cout << "Enter Account 1 Balance: ";
-    cin >> a1.balance;
-
-    cout << "Enter Account 2 Number: ";
-    cin >> a2.accountNumber;
-
-    cout << "Enter Account 2 Balance: ";
-    cin >> a2.balance;
-
-    cout << "Enter Amount to Transfer: ";
-    cin >> amount;
-
-    a1.transfer(a2, amount);
-
+    a1.accountNumber = 101;
+    a1.balance = 5000;
+    a2.accountNumber = 102;
+    a2.balance = 2000;
+    a1.transfer(a2, 1000);
     cout << "Account 1 Balance: " << a1.balance << endl;
     cout << "Account 2 Balance: " << a2.balance << endl;
-
     return 0;
 }
-  
